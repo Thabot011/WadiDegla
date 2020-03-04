@@ -1,22 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using WD.Repo.DBContext;
 using WD.Repo.Repository;
 using WD.Service.SaleFromService;
 using WD.Service.SalesLeadsFormService;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
-using Microsoft.OpenApi.Models;
 
 namespace WD.Web
 {
@@ -38,11 +30,9 @@ namespace WD.Web
             services.AddTransient<ISalesLeadsFormService, SalesLeadsFormService>();
             services.AddTransient<ISaleFromService, SaleFromService>();
             services.AddAutoMapper(typeof(Startup));
+            services.AddControllers();
+            services.AddSwaggerDocument();
 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Swagger Wadi Degla Demo", Version = "v1" });
-            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,17 +49,15 @@ namespace WD.Web
 
             app.UseAuthorization();
 
+            app.UseOpenApi();
+            app.UseSwaggerUi3();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
 
-            app.UseSwagger();
-
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Swagger Wadi Degla Demo V1");
-            });
+           
         }
     }
 }

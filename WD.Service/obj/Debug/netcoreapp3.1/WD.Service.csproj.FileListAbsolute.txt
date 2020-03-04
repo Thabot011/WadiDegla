@@ -1,0 +1,13 @@
+D:\WadiDeglaProjectBackEnd\WD.Service\bin\Debug\netcoreapp3.1\WD.Service.deps.json
+D:\WadiDeglaProjectBackEnd\WD.Service\bin\Debug\netcoreapp3.1\WD.Service.dll
+D:\WadiDeglaProjectBackEnd\WD.Service\bin\Debug\netcoreapp3.1\WD.Service.pdb
+D:\WadiDeglaProjectBackEnd\WD.Service\bin\Debug\netcoreapp3.1\WD.Data.dll
+D:\WadiDeglaProjectBackEnd\WD.Service\bin\Debug\netcoreapp3.1\WD.Repo.dll
+D:\WadiDeglaProjectBackEnd\WD.Service\bin\Debug\netcoreapp3.1\WD.Data.pdb
+D:\WadiDeglaProjectBackEnd\WD.Service\bin\Debug\netcoreapp3.1\WD.Repo.pdb
+D:\WadiDeglaProjectBackEnd\WD.Service\obj\Debug\netcoreapp3.1\WD.Service.csprojAssemblyReference.cache
+D:\WadiDeglaProjectBackEnd\WD.Service\obj\Debug\netcoreapp3.1\WD.Service.AssemblyInfoInputs.cache
+D:\WadiDeglaProjectBackEnd\WD.Service\obj\Debug\netcoreapp3.1\WD.Service.AssemblyInfo.cs
+D:\WadiDeglaProjectBackEnd\WD.Service\obj\Debug\netcoreapp3.1\WD.Service.csproj.CopyComplete
+D:\WadiDeglaProjectBackEnd\WD.Service\obj\Debug\netcoreapp3.1\WD.Service.dll
+D:\WadiDeglaProjectBackEnd\WD.Service\obj\Debug\netcoreapp3.1\WD.Service.pdb

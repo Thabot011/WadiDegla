@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WD.Data.Model;
 using WD.Service.SaleFromService;
-using WD.Service.SalesLeadsFormService;
 using WD.Web.DTO;
 
 namespace WD.Web.Controllers
