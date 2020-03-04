@@ -1,0 +1,5 @@
+D:\WadiDeglaProjectBackEnd\WD.Repo\bin\Debug\netcoreapp3.1\WD.Repo.deps.json
+D:\WadiDeglaProjectBackEnd\WD.Repo\bin\Debug\netcoreapp3.1\WD.Repo.dll
+D:\WadiDeglaProjectBackEnd\WD.Repo\obj\Debug\netcoreapp3.1\WD.Repo.csprojAssemblyReference.cache
+D:\WadiDeglaProjectBackEnd\WD.Repo\obj\Debug\netcoreapp3.1\WD.Repo.AssemblyInfoInputs.cache
+D:\WadiDeglaProjectBackEnd\WD.Repo\obj\Debug\netcoreapp3.1\WD.Repo.AssemblyInfo.cs
