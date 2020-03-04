@@ -15,6 +15,8 @@ using WD.Repo.Repository;
 using WD.Service.SaleFromService;
 using WD.Service.SalesLeadsFormService;
 using Microsoft.EntityFrameworkCore;
+using AutoMapper;
+using Microsoft.OpenApi.Models;
 
 namespace WD.Web
 {
@@ -35,6 +37,12 @@ namespace WD.Web
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddTransient<ISalesLeadsFormService, SalesLeadsFormService>();
             services.AddTransient<ISaleFromService, SaleFromService>();
+            services.AddAutoMapper(typeof(Startup));
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Swagger Wadi Degla Demo", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +62,13 @@ namespace WD.Web
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Swagger Wadi Degla Demo V1");
             });
         }
     }

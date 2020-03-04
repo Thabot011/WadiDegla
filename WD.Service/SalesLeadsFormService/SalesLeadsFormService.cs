@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using WD.Data.Model;
 using WD.Repo.Repository;
 
@@ -14,16 +15,16 @@ namespace WD.Service.SalesLeadsFormService
         {
             _salesLeadsFormRepository = salesLeadsFormRepository;
         }
-        public void DeletesalesLeadsForm(int id)
+        public async Task<int> DeletesalesLeadsForm(int id)
         {
             salesLeadsForm salesLeadsForm = GetsalesLeadsForm(id);
             _salesLeadsFormRepository.Remove(salesLeadsForm);
-            _salesLeadsFormRepository.SaveChanges();
+            return await _salesLeadsFormRepository.SaveChanges();
         }
 
-        public IEnumerable<salesLeadsForm> GetSalesLeadsForms()
+        public async Task<IEnumerable<salesLeadsForm>> GetSalesLeadsForms()
         {
-           return _salesLeadsFormRepository.GetAll();
+            return await _salesLeadsFormRepository.GetAll();
         }
 
         public salesLeadsForm GetsalesLeadsForm(int id)
@@ -31,14 +32,14 @@ namespace WD.Service.SalesLeadsFormService
             return _salesLeadsFormRepository.Get(id);
         }
 
-        public void InsertsalesLeadsForm(salesLeadsForm salesLeadsForm)
+        public async Task<int> InsertsalesLeadsForm(salesLeadsForm salesLeadsForm)
         {
-            _salesLeadsFormRepository.Insert(salesLeadsForm);
+            return await _salesLeadsFormRepository.Insert(salesLeadsForm);
         }
 
-        public void UpdatesalesLeadsForm(salesLeadsForm salesLeadsForm)
+        public async Task<int> UpdatesalesLeadsForm(salesLeadsForm salesLeadsForm)
         {
-            _salesLeadsFormRepository.Update(salesLeadsForm);
+            return await _salesLeadsFormRepository.Update(salesLeadsForm);
         }
     }
 }

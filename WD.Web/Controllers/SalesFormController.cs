@@ -6,6 +6,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WD.Data.Model;
+using WD.Service.SaleFromService;
 using WD.Service.SalesLeadsFormService;
 using WD.Web.DTO;
 
@@ -13,27 +14,27 @@ namespace WD.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SalesLeadsController : ControllerBase
+    public class SalesFormController : ControllerBase
     {
-        private readonly ISalesLeadsFormService _salesLeadsFormService;
+        private readonly ISaleFromService _saleFormService;
         private readonly IMapper _mapper;
 
-        public SalesLeadsController(ISalesLeadsFormService salesLeadsFormService, IMapper mapper)
+        public SalesFormController(ISaleFromService saleFormService, IMapper mapper)
         {
-            _salesLeadsFormService = salesLeadsFormService;
+            _saleFormService = saleFormService;
             _mapper = mapper;
         }
 
 
         [HttpPost]
-        public async Task<IActionResult> AddSalesLeads([FromBody]SalesLeadsFormDTO model)
+        public async Task<IActionResult> AddSaleFrom([FromBody]SalesFormDTO model)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    salesLeadsForm salesLeadsForm = _mapper.Map<salesLeadsForm>(model);
-                    var result =  await _salesLeadsFormService.InsertsalesLeadsForm(salesLeadsForm);
+                    SaleForm salesLeadsForm = _mapper.Map<SaleForm>(model);
+                    var result =  await _saleFormService.InsertSaleForm(salesLeadsForm);
                     if (result > 0)
                     {
                         return Ok(result);
@@ -56,14 +57,14 @@ namespace WD.Web.Controllers
 
 
         [HttpPut]
-        public async Task<IActionResult> UpdateSalesLeads([FromBody]SalesLeadsFormDTO model)
+        public async Task<IActionResult> UpdateSaleFrom([FromBody]SalesFormDTO model)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    salesLeadsForm salesLeadsForm = _mapper.Map<salesLeadsForm>(model);
-                    await _salesLeadsFormService.UpdatesalesLeadsForm(salesLeadsForm);
+                    SaleForm salesLeadsForm = _mapper.Map<SaleForm>(model);
+                    await _saleFormService.UpdateSaleForm(salesLeadsForm);
 
                     return Ok();
                 }
@@ -85,18 +86,18 @@ namespace WD.Web.Controllers
 
 
         [HttpDelete]
-        public async Task<IActionResult> DeleteSalesLeads(int SalesLeadsId)
+        public async Task<IActionResult> DeleteSalesLeads(int SalesFormId)
         {
             int result = 0;
 
-            if (SalesLeadsId == 0)
+            if (SalesFormId == 0)
             {
                 return BadRequest();
             }
 
             try
             {
-                result = await _salesLeadsFormService.DeletesalesLeadsForm(SalesLeadsId);
+                result = await _saleFormService.DeleteSaleForm(SalesFormId);
                 if (result == 0)
                 {
                     return NotFound();
@@ -116,7 +117,7 @@ namespace WD.Web.Controllers
         {
             try
             {
-                var posts = await _salesLeadsFormService.GetSalesLeadsForms();
+                var posts = await _saleFormService.GetSaleForms();
                 if (posts == null)
                 {
                     return NotFound();

@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using WD.Data.Model;
 
 namespace WD.Repo.Repository
 {
    public interface IRepository<T> where T : BaseEntity
     {
-        IEnumerable<T> GetAll();
+        Task<IEnumerable<T>> GetAll();
         T Get(int id);
-        void Insert(T entity);
-        void Update(T entity);
-        void Delete(T entity);
+        Task<int> Insert(T entity);
+        Task<int> Update(T entity);
+        int Delete(T entity);
         void Remove(T entity);
-        void SaveChanges();
+        Task<int> SaveChanges();
     }
 }

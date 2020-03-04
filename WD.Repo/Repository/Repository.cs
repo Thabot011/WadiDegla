@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using WD.Data.Model;
 using WD.Repo.DBContext;
 
@@ -19,42 +20,42 @@ namespace WD.Repo.Repository
             this.context = context;
             entities = context.Set<T>();
         }
-        public IEnumerable<T> GetAll()
+        public async Task<IEnumerable<T>> GetAll()
         {
-            return entities.AsEnumerable();
+            return await entities.ToListAsync();
         }
 
         public T Get(int id)
         {
             return entities.SingleOrDefault(s => s.Id == id);
         }
-        public void Insert(T entity)
+        public async Task<int> Insert(T entity)
         {
             if (entity == null)
             {
                 throw new ArgumentNullException("entity");
             }
-            entities.Add(entity);
-            context.SaveChanges();
+           await entities.AddAsync(entity);
+           return context.SaveChanges();
         }
 
-        public void Update(T entity)
+        public async Task<int> Update(T entity)
         {
             if (entity == null)
             {
                 throw new ArgumentNullException("entity");
             }
-            context.SaveChanges();
+           return await context.SaveChangesAsync();
         }
 
-        public void Delete(T entity)
+        public int Delete(T entity)
         {
             if (entity == null)
             {
                 throw new ArgumentNullException("entity");
             }
             entities.Remove(entity);
-            context.SaveChanges();
+           return context.SaveChanges();
         }
         public void Remove(T entity)
         {
@@ -65,9 +66,9 @@ namespace WD.Repo.Repository
             entities.Remove(entity);
         }
 
-        public void SaveChanges()
+        public async Task<int> SaveChanges()
         {
-            context.SaveChanges();
+           return await context.SaveChangesAsync();
         }
     }
 }

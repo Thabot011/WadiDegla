@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using WD.Data.Model;
 
 namespace WD.Service.SalesLeadsFormService
 {
    public interface ISalesLeadsFormService
     {
-        IEnumerable<salesLeadsForm> GetSalesLeadsForms();
+        Task<IEnumerable<salesLeadsForm>> GetSalesLeadsForms();
         salesLeadsForm GetsalesLeadsForm(int id);
-        void InsertsalesLeadsForm(salesLeadsForm salesLeadsForm);
-        void UpdatesalesLeadsForm(salesLeadsForm salesLeadsForm);
-        void DeletesalesLeadsForm(int id);
+        Task<int> InsertsalesLeadsForm(salesLeadsForm salesLeadsForm);
+        Task<int> UpdatesalesLeadsForm(salesLeadsForm salesLeadsForm);
+        Task<int> DeletesalesLeadsForm(int id);
     }
 }

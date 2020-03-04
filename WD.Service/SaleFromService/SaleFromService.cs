@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using WD.Data.Model;
 using WD.Repo.Repository;
 
@@ -16,16 +17,16 @@ namespace WD.Service.SaleFromService
         }
 
 
-        public void DeleteSaleForm(int id)
+        public async Task<int> DeleteSaleForm(int id)
         {
             SaleForm saleForm = GetSaleForm(id);
             _saleFormRepository.Remove(saleForm);
-            _saleFormRepository.SaveChanges();
+            return await _saleFormRepository.SaveChanges();
         }
 
-        public IEnumerable<SaleForm> GetSaleForms()
+        public async Task<IEnumerable<SaleForm>> GetSaleForms()
         {
-            return _saleFormRepository.GetAll();
+            return await _saleFormRepository.GetAll();
         }
 
         public SaleForm GetSaleForm(int id)
@@ -33,14 +34,14 @@ namespace WD.Service.SaleFromService
             return _saleFormRepository.Get(id);
         }
 
-        public void InsertSaleForm(SaleForm SaleForm)
+        public async Task<int> InsertSaleForm(SaleForm SaleForm)
         {
-            _saleFormRepository.Insert(SaleForm);
+            return await _saleFormRepository.Insert(SaleForm);
         }
 
-        public void UpdateSaleForm(SaleForm SaleForm)
+        public async Task<int> UpdateSaleForm(SaleForm SaleForm)
         {
-            _saleFormRepository.Update(SaleForm);
+            return await _saleFormRepository.Update(SaleForm);
         }
     }
 }
