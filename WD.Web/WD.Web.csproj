@@ -14,5 +14,9 @@
     <ProjectReference Include="..\WD.Service\WD.Service.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DTO\" />
+  </ItemGroup>
+
 
 </Project>
